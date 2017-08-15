@@ -8,9 +8,11 @@ from .. import github
 from .. import git_mixins
 from ...common import interwebs
 from ...common import util
+from ...core.commands.push import GsPushToBranchNameCommand
 
-SET_UPSTREAM_PROMPT = ("You have not set an upstream for the active branch.  "
-                       "Would you like to set one?")
+
+PUSH_PROMPT = ("You have not set an upstream for the active branch.  "
+               "Would you like to push to a remote?")
 
 
 class GsPullRequestCommand(TextCommand, GitCommand, git_mixins.GithubRemotesMixin):
@@ -155,19 +157,14 @@ class GsCreatePullRequestCommand(TextCommand, GitCommand, git_mixins.GithubRemot
         sublime.set_timeout_async(self.run_async, 0)
 
     def run_async(self):
-        savvy_settings = sublime.load_settings("GitSavvy.sublime-settings")
-        if savvy_settings.get("prompt_for_tracking_branch") and not self.get_upstream_for_active_branch():
-            if sublime.ok_cancel_dialog(SET_UPSTREAM_PROMPT):
-                self.remotes = list(self.get_remotes().keys())
-
-                if not self.remotes:
-                    self.view.window().show_quick_panel(["There are no remotes available."], None)
-                else:
-                    self.view.window().show_quick_panel(
-                        self.remotes,
-                        self.on_select_remote,
-                        flags=sublime.MONOSPACE_FONT
-                        )
+        if not self.get_upstream_for_active_branch():
+            if sublime.ok_cancel_dialog(PUSH_PROMPT):
+                self.view.window().run_command(
+                    "gs_push_and_create_pull_request",
+                    {
+                        "branch_name": self.get_current_branch_name(),
+                        "set_upstream": True
+                    })
 
         else:
             remote_branch = self.get_active_remote_branch()
@@ -242,3 +239,10 @@ class GsCreatePullRequestCommand(TextCommand, GitCommand, git_mixins.GithubRemot
         self.git("branch", "-u", remote_ref, self.current_local_branch)
 
         sublime.set_timeout_async(self.run_async, 0)
+
+
+class GsPushAndCreatePullRequestCommand(GsPushToBranchNameCommand):
+
+    def do_push(self, *args, **kwargs):
+        super().do_push(*args, **kwargs)
+        self.window.view.run_command("gs_create_pull_request")

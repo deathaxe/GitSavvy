@@ -315,7 +315,7 @@
     },
     {
         "keys": ["t", "c"],
-        "command": "gs_create_stash",
+        "command": "gs_stash_create",
         "context": [
             { "key": "setting.command_mode", "operator": "equal", "operand": false },
             { "key": "setting.git_savvy.status_view", "operator": "equal", "operand": true }
@@ -323,7 +323,7 @@
     },
     {
         "keys": ["t", "u"],
-        "command": "gs_create_stash",
+        "command": "gs_stash_create",
         "args": { "include_untracked": true },
         "context": [
             { "key": "setting.command_mode", "operator": "equal", "operand": false },
@@ -332,7 +332,7 @@
     },
     {
         "keys": ["t", "g"],
-        "command": "gs_create_stash",
+        "command": "gs_stash_create",
         "args": { "stash_of_indexed": true },
         "context": [
             { "key": "setting.command_mode", "operator": "equal", "operand": false },

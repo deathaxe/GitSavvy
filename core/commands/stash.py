@@ -5,7 +5,7 @@ from ..ui_mixins.quick_panel import show_stash_panel
 from ...common import util
 
 
-class GsApplyStashCommand(WindowCommand, GitCommand):
+class GsStashApplyCommand(WindowCommand, GitCommand):
 
     """
     Apply the selected stash.
@@ -25,7 +25,7 @@ class GsApplyStashCommand(WindowCommand, GitCommand):
         util.view.refresh_gitsavvy(self.window.active_view())
 
 
-class GsPopStashCommand(WindowCommand, GitCommand):
+class GsStashPopCommand(WindowCommand, GitCommand):
 
     """
     Pop the selected stash.
@@ -45,7 +45,7 @@ class GsPopStashCommand(WindowCommand, GitCommand):
         util.view.refresh_gitsavvy(self.window.active_view())
 
 
-class GsShowStashCommand(WindowCommand, GitCommand):
+class GsStashShowCommand(WindowCommand, GitCommand):
 
     """
     For each selected stash, open a new window to display the diff
@@ -79,7 +79,7 @@ class GsShowStashCommand(WindowCommand, GitCommand):
         return stash_view
 
 
-class GsCreateStashCommand(WindowCommand, GitCommand):
+class GsStashCreateCommand(WindowCommand, GitCommand):
 
     """
     Create a new stash from the user's unstaged changes.
@@ -117,7 +117,7 @@ class GsCreateStashCommand(WindowCommand, GitCommand):
         util.view.refresh_gitsavvy(self.window.active_view())
 
 
-class GsDropStashCommand(WindowCommand, GitCommand):
+class GsStashDropCommand(WindowCommand, GitCommand):
 
     """
     Drop the selected stash.

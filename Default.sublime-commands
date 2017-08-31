@@ -368,32 +368,32 @@
     },
     {
         "caption": "git: create stash",
-        "command": "gs_create_stash"
+        "command": "gs_stash_create"
     },
     {
         "caption": "git: create stash including untracked files",
-        "command": "gs_create_stash",
+        "command": "gs_stash_create",
         "args" : { "include_untracked": true }
     },
     {
         "caption": "git: create stash of staged changes only",
-        "command": "gs_create_stash",
+        "command": "gs_stash_create",
         "args" : { "stash_of_indexed": true }
     },
     {
         "caption": "git: apply stash",
-        "command": "gs_apply_stash"
+        "command": "gs_stash_apply"
     },
     {
         "caption": "git: pop stash",
-        "command": "gs_pop_stash"
+        "command": "gs_stash_pop"
     },
     {
         "caption": "git: show stash",
-        "command": "gs_show_stash"
+        "command": "gs_stash_show"
     },
     {
         "caption": "git: drop stash",
-        "command": "gs_drop_stash"
+        "command": "gs_stash_drop"
     },
 ]

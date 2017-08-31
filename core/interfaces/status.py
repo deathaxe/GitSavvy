@@ -621,7 +621,7 @@ class GsStatusStashCommand(TextCommand, GitCommand):
             return
 
         if action == "show":
-            self.view.window().run_command("gs_show_stash", {"stash_ids": ids})
+            self.view.window().run_command("gs_stash_show", {"stash_ids": ids})
             return
 
         if len(ids) > 1:
@@ -629,11 +629,11 @@ class GsStatusStashCommand(TextCommand, GitCommand):
             return
 
         if action == "apply":
-            self.view.window().run_command("gs_apply_stash", {"stash_id": ids[0]})
+            self.view.window().run_command("gs_stash_apply", {"stash_id": ids[0]})
         elif action == "pop":
-            self.view.window().run_command("gs_pop_stash", {"stash_id": ids[0]})
+            self.view.window().run_command("gs_stash_pop", {"stash_id": ids[0]})
         elif action == "drop":
-            self.view.window().run_command("gs_drop_stash", {"stash_id": ids[0]})
+            self.view.window().run_command("gs_stash_drop", {"stash_id": ids[0]})
 
 
 class GsStatusLaunchMergeToolCommand(TextCommand, GitCommand):

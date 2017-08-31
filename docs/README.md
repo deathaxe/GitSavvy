@@ -44,6 +44,17 @@ If you run into any issues not addressed here, please feel free to [open an issu
 - [git: quick stage current file and fixup](commit.md#git-quick-stage-current-file-and-fixup)
 
 
+## Stashing
+
+- [git: create stash](stash.md#git-create-stash)
+- [git: create stash including untracked files](stash.md#git-create-stash-including-untracked-files)
+- [git: create stash of staged changes only](stash.md#git-create-stash-of-staged-changes-only)
+- [git: apply stash](stash.md#git-apply-stash)
+- [git: pop stash](stash.md#git-pop-stash)
+- [git: show stash](stash.md#git-show-stash)
+- [git: discard stash](stash.md#git-discard-stash)
+
+
 ### Branch management
 
 - [git: checkout](branch_mgmt.md#git-checkout)

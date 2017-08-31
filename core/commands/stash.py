@@ -1,5 +1,4 @@
-import sublime
-from sublime_plugin import WindowCommand, EventListener
+from sublime_plugin import WindowCommand
 
 from ..git_command import GitCommand
 from ..ui_mixins.quick_panel import show_stash_panel
@@ -7,13 +6,14 @@ from ...common import util
 
 
 class GsApplyStashCommand(WindowCommand, GitCommand):
+
     """
     Apply the selected stash.
     """
 
     def run(self, stash_id=None):
         if stash_id is None:
-            show_stash_panel(self, self.do_apply)
+            show_stash_panel(self.do_apply)
         else:
             self.do_apply(stash_id)
 
@@ -26,13 +26,14 @@ class GsApplyStashCommand(WindowCommand, GitCommand):
 
 
 class GsPopStashCommand(WindowCommand, GitCommand):
+
     """
     Pop the selected stash.
     """
 
     def run(self, stash_id=None):
         if stash_id is None:
-            show_stash_panel(self, self.do_pop)
+            show_stash_panel(self.do_pop)
         else:
             self.do_pop(stash_id)
 
@@ -45,6 +46,7 @@ class GsPopStashCommand(WindowCommand, GitCommand):
 
 
 class GsShowStashCommand(WindowCommand, GitCommand):
+
     """
     For each selected stash, open a new window to display the diff
     for that stash.
@@ -52,7 +54,7 @@ class GsShowStashCommand(WindowCommand, GitCommand):
 
     def run(self, stash_ids=[]):
         if len(stash_ids) == 0:
-            show_stash_panel(self, self.do_show)
+            show_stash_panel(self.do_show)
         else:
             for stash_id in stash_ids:
                 self.do_show(stash_id)
@@ -78,6 +80,7 @@ class GsShowStashCommand(WindowCommand, GitCommand):
 
 
 class GsCreateStashCommand(WindowCommand, GitCommand):
+
     """
     Create a new stash from the user's unstaged changes.
     """
@@ -115,13 +118,14 @@ class GsCreateStashCommand(WindowCommand, GitCommand):
 
 
 class GsDiscardStashCommand(WindowCommand, GitCommand):
+
     """
     Drop the selected stash.
     """
 
     def run(self, stash_id=None):
         if stash_id is None:
-            show_stash_panel(self, self.do_drop)
+            show_stash_panel(self.do_drop)
         else:
             self.do_drop(stash_id)
 

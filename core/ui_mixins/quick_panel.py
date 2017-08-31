@@ -520,4 +520,4 @@ class StashPanel(PaginatedPanel, GitCommand):
         super().__init__(self.get_stashes(), on_done, **kwargs)
 
     def format_item(self, entry):
-        return entry.id + " " + entry.description
+        return (entry.id + " " + entry.description, entry.id)

@@ -17,11 +17,11 @@ class GsStashApplyCommand(WindowCommand, GitCommand):
         else:
             self.do_apply(stash_id)
 
-    def do_apply(self, id):
-        if id == -1:
+    def do_apply(self, stash_id):
+        if stash_id is None:
             return
 
-        self.apply_stash(id)
+        self.apply_stash(stash_id)
         util.view.refresh_gitsavvy(self.window.active_view())
 
 
@@ -37,11 +37,11 @@ class GsStashPopCommand(WindowCommand, GitCommand):
         else:
             self.do_pop(stash_id)
 
-    def do_pop(self, id):
-        if id == -1:
+    def do_pop(self, stash_id):
+        if stash_id is None:
             return
 
-        self.pop_stash(id)
+        self.pop_stash(stash_id)
         util.view.refresh_gitsavvy(self.window.active_view())
 
 
@@ -59,12 +59,12 @@ class GsStashShowCommand(WindowCommand, GitCommand):
             for stash_id in stash_ids:
                 self.do_show(stash_id)
 
-    def do_show(self, id):
-        if id == -1:
+    def do_show(self, stash_id):
+        if stash_id is None:
             return
 
-        stash_view = self.get_stash_view("stash@{{{}}}".format(id))
-        stash_view.run_command("gs_replace_view_text", {"text": self.show_stash(id), "nuke_cursors": True})
+        stash_view = self.get_stash_view("stash@{{{}}}".format(stash_id))
+        stash_view.run_command("gs_replace_view_text", {"text": self.show_stash(stash_id), "nuke_cursors": True})
 
     def get_stash_view(self, title):
         window = self.window if hasattr(self, "window") else self.view.window()
@@ -129,11 +129,11 @@ class GsStashDropCommand(WindowCommand, GitCommand):
         else:
             self.do_drop(stash_id)
 
-    def do_drop(self, id):
-        if id == -1:
+    def do_drop(self, stash_id):
+        if stash_id is None:
             return
 
         @util.actions.destructive(description="drop a stash")
-        def do_drop_stash(id):
-            self.drop_stash(id)
-        do_drop_stash(id)
+        def do_drop_stash(stash_id):
+            self.drop_stash(stash_id)
+        do_drop_stash(stash_id)

@@ -117,7 +117,7 @@ class GsCreateStashCommand(WindowCommand, GitCommand):
         util.view.refresh_gitsavvy(self.window.active_view())
 
 
-class GsDiscardStashCommand(WindowCommand, GitCommand):
+class GsDropStashCommand(WindowCommand, GitCommand):
 
     """
     Drop the selected stash.
@@ -133,7 +133,7 @@ class GsDiscardStashCommand(WindowCommand, GitCommand):
         if id == -1:
             return
 
-        @util.actions.destructive(description="discard a stash")
+        @util.actions.destructive(description="drop a stash")
         def do_drop_stash(id):
             self.drop_stash(id)
         do_drop_stash(id)

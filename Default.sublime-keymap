@@ -342,7 +342,7 @@
     {
         "keys": ["t", "d"],
         "command": "gs_status_stash",
-        "args": { "action": "discard" },
+        "args": { "action": "drop" },
         "context": [
             { "key": "setting.command_mode", "operator": "equal", "operand": false },
             { "key": "setting.git_savvy.status_view", "operator": "equal", "operand": true },

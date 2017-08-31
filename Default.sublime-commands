@@ -393,7 +393,7 @@
         "command": "gs_show_stash"
     },
     {
-        "caption": "git: discard stash",
-        "command": "gs_discard_stash"
+        "caption": "git: drop stash",
+        "command": "gs_drop_stash"
     },
 ]

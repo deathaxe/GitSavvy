@@ -71,7 +71,7 @@ class StatusInterface(ui.Interface, GitCommand):
       [p] push current branch               [t][c] create stash
                                             [t][u] create stash including untracked files
       [i] ignore file                       [t][g] create stash of staged changes only
-      [I] ignore pattern                    [t][d] discard stash
+      [I] ignore pattern                    [t][d] drop stash
 
       ###########
       ## OTHER ##
@@ -632,8 +632,8 @@ class GsStatusStashCommand(TextCommand, GitCommand):
             self.view.window().run_command("gs_apply_stash", {"stash_id": ids[0]})
         elif action == "pop":
             self.view.window().run_command("gs_pop_stash", {"stash_id": ids[0]})
-        elif action == "discard":
-            self.view.window().run_command("gs_discard_stash", {"stash_id": ids[0]})
+        elif action == "drop":
+            self.view.window().run_command("gs_drop_stash", {"stash_id": ids[0]})
 
 
 class GsStatusLaunchMergeToolCommand(TextCommand, GitCommand):
